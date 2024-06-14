@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutoring Services</title>
+    <style>
+    .header{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .pic{
+        display: inline-block;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        width: 30%; 
+    }
+    .body{
+        width: 800px;
+        padding: 20px;
+        background-color: #f5f5f5cb;
+        border-radius: 20px;
+        float: left;
+        box-shadow: 0 0 5px black;
+    }
+    table{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    th, td{
+        padding: 10px;
+        text-align: center;
+        border: 3px solid #ddd;
+    }
+    .button{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #000000e5;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .button.clicked{
+        background-color: grey;
+    }
+    .Cart{
+        width: 300px;
+        padding: auto;
+        margin-left: 20px; 
+        background-color: #f5f5f5cb;
+        border-radius: 10px;
+        box-shadow: 0 0 5px black;
+        float: right; 
+    }
+    .cartContent{
+        font-size: 16px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    .cartCost{
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin: 10px;         
+    }
+    .cartCost.ayad{
+        text-align: right;
+        bottom: 10px;
+        right: 10px  
+    }
+
+    </style>
+</head>
+<body bgcolor="#eeebe3">
+    <div class="header">
+    <h1>Ayad's Tutoring Services</h1>
+    <img class="pic" src="myLecture.png" width="425" height="275">
+    <img class="pic" src="myLecture2.png" width="425" height="275">
+    <img class="pic" src="myLecture3.png" width="425" height="275">
+
+    </div>
+
+    <div class="body">
+    <pre>
+        Available Courses For Junior Students
+    </pre>
+
+    <table>
+        <tr>
+            <th> JUNIORS </th>
+            <th>Grade 9</th>
+            <th>Grade 10</th>
+        </tr>
+        <tr>
+            <td>english</td>
+            <td><button class="button" onclick="buyCourseAA(this, 0)">$30</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 1)">$30</button></td>
+        </tr>
+        <tr>
+            <td>math</td>
+            <td><button class="button" onclick="buyCourseAA(this, 2)">$25</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 3)">$30</button></td>
+        </tr>
+        <tr>
+            <td>science</td>
+            <td><button class="button" onclick="buyCourseAA(this, 4)">$35</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 5)">$37</button></td>
+        </tr>
+    </table>
+
+    <pre> 
+        Senior Students ($75 discount when all grade 12 sciences and maths are bought)
+    </pre>
+    
+    <table>
+        <th> SENIORS </th>
+        <th>Grade 11</th>
+        <th>Grade 12</th>
+        <tr>
+            <td>english</td>
+            <td><button class="button" onclick="buyCourseAA(this, 6)">$3000</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 7)">$5195</button></td>
+        </tr>
+        <tr>
+            <td>functions</td>
+            <td><button class="button" onclick="buyCourseAA(this, 8)">$40</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 9)">$52</button></td>
+        </tr>
+        <tr>
+            <td>biology</td>
+            <td><button class="button" onclick="buyCourseAA(this, 10)">$90</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 11)">$40</button></td>
+        </tr>
+        <tr>
+            <td>chemistry</td>
+            <td><button class="button" onclick="buyCourseAA(this, 12)">$45</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 13)">$50</button></td>
+        </tr>
+        <tr>
+            <td>physics</td>
+            <td><button class="button" onclick="buyCourseAA(this, 14)">$15</button></td>
+            <td><button class="button" onclick="buyCourseAA(this, 15)">$32</button></td>
+        </tr>
+    </table>
+
+    <pre> 
+        Special Courses
+    </pre>
+
+    <table>
+        <th> Special Courses </th>
+        <th>Price</th>
+        <tr>
+            <td>Grade 12 Calculus</td>
+            <td>
+                <button class="button" onclick="buyCourseAA(this, 16)">$65</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Grade 12 Data Management</td>
+            <td>
+                <button class="button" onclick="buyCourseAA(this, 17)">$45</button>
+            </td>
+        </tr>
+        </table>
+        </div>
+
+        <div class="Cart">
+        <div class="cartContent"></div>
+        <div class="cartCost">
+            <pre>Subtotal = $0
+Tax = 13%
+Discount = $0
+Total = $0</pre>
+        </div>
+        </div>        
+        
+    <script>    
+        function readPriceAA(button) {
+            return parseInt(button.innerHTML.substring(1))
+        }
+    
+        let boughtCourses = {}
+
+        let courseListAA = ['Grade 9 English', 'Grade 10 English', 'Grade 9 Math', 'Grade 10 Math', 
+        'Grade 9 Science', 'Grade 10 Science', 'Grade 11 English', 'Grade 12 English', 'Grade 11 Functions', 
+        'Grade 12 Functions', 'Grade 11 Biology', 'Grade 12 Biology', 'Grade 11 Chemistry', 'Grade 12 Chemistry',
+        'Grade 11 Physics', 'Grade 12 Physics', 'Grade 12 Calculus', 'Grade 12 Data Management'];
+
+        function buyCourseAA(button, courseIndex) {
+
+            let priceAA = readPriceAA(button)
+            let courseAA = courseListAA[courseIndex]
+
+            if(boughtCourses[courseAA]) {
+                delete boughtCourses[courseAA]
+                updatePriceAA(-priceAA)
+                button.classList.remove('clicked')
+            }else {
+                boughtCourses[courseAA] = priceAA
+                updatePriceAA(priceAA)
+                button.classList.add('clicked')
+            }
+            
+            
+            sixPackAA(Object.keys(boughtCourses))
+            updateContentAA(Object.keys(boughtCourses), Object.values(boughtCourses)) 
+        }
+
+        let discAA = 0
+        function sixPackAA(myArray){
+            let myPackAA = ['Grade 12 Physics', 'Grade 12 Calculus', 'Grade 12 Data Management','Grade 12 Functions','Grade 12 Chemistry','Grade 12 Biology']
+            let foundAA = []
+
+            for(let i = 0; i < myArray.length; i++){
+                for(let j = 0; j < 6; j++){
+                    if(myArray[i] == myPackAA[j]){
+                        foundAA.push(myArray[i])
+                    }
+                }
+            }
+
+            if(foundAA.length == 6){
+                discAA = 75
+            }else{
+                discAA = 0
+            }updateCostDisplayAA()
+        }
+
+
+        let subTotalAA = 0
+        function updatePriceAA(price) {
+            subTotalAA += price
+            updateCostDisplayAA()
+        }
+
+        let costElementAA = document.querySelector('.cartCost')
+        function updateCostDisplayAA() {
+            let TaxAA = Math.round(subTotalAA*0.13)
+            let TotalAA = subTotalAA + TaxAA - discAA
+            costElementAA.innerText = "\tSubtotal : $" + subTotalAA + '\n\tTax : 13% ($'+TaxAA+')\n\tDiscount : $'+ discAA + '\n\tTotal = $' + TotalAA
+            if(TotalAA !== 0){
+                costElementAA.classList.add('ayad')
+            }else{
+                costElementAA.classList.remove('ayad')
+            }
+        }
+
+
+        let cartContentAA = document.querySelector('.cartContent')
+        function updateContentAA(course, price) {
+            cartContentAA.innerText = ""
+
+            for(let i = 0; i < course.length; i++){
+                cartContentAA.innerText +='\n'+ course[i] +" : $"+ price[i] + '\n'
+            }
+        }
+
+    </script>
+    </body>
+</html>
